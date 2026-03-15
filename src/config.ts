@@ -1,25 +1,32 @@
+export const LOGO_IMAGE = {
+  enable: true,
+  svg: false,
+  width: 27,
+  height: 27,
+};
+
 export const SITE = {
-  website: "https://astro-paper.pages.dev/", // replace this with your deployed domain
-  base: "", // set to e.g. "/blog/" to serve under a sub-path
-  author: "Sat Naing",
-  profile: "https://satnaing.dev/",
-  desc: "A minimal, responsive and SEO-friendly Astro blog theme.",
-  title: "AstroPaper",
-  ogImage: "astropaper-og.jpg",
+  website: "https://sirlisko.com/blog",
+  base: "/blog",
+  author: "sirlisko",
+  profile: "https://sirlisko.com/",
+  desc: "Luca's thoughts, stories, and ideas.",
+  title: "Blog | sirlisko | Luca Lischetti",
+  ogImage: "og.jpg",
   lightAndDarkMode: true,
-  postPerIndex: 4,
-  postPerPage: 4,
+  postPerIndex: 10,
+  postPerPage: 10,
   scheduledPostMargin: 15 * 60 * 1000, // 15 minutes
   showArchives: true,
   showBackButton: true, // show back button in post detail
   editPost: {
-    enabled: true,
+    enabled: false,
     text: "Edit page",
-    url: "https://github.com/satnaing/astro-paper/edit/main/",
+    url: "https://github.com/sirlisko/blog/edit/main/",
   },
   dynamicOgImage: true,
   dir: "ltr", // "rtl" | "auto"
   lang: "en", // html lang code. Set this empty and default will be "en"
-  timezone: "Asia/Bangkok", // Default global timezone (IANA format) https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  timezone: "Europe/London", // Default global timezone (IANA format) https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   trailingSlash: "never",
 } as const;

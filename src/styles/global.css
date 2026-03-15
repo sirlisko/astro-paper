@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "./typography.css";
+@import "remark-github-blockquote-alert/alert.css";
 
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
@@ -67,4 +68,60 @@ html[data-theme="dark"] {
 /* Anything that has been anchored to should have extra scroll margin */
 :target {
   scroll-margin-block: 1rem;
+}
+
+
+/* ===== markdown alerts (outside @layer to beat imported alert.css) ===== */
+.markdown-alert {
+  --color-border-default: #d0d7de;
+  --color-accent-fg: #0969da;
+  --color-accent-emphasis: #0969da;
+  --color-danger-fg: #d1242f;
+  --color-danger-emphasis: #cf222e;
+  --color-attention-fg: #9a6700;
+  --color-attention-emphasis: #9a6700;
+  --color-done-fg: #8250df;
+  --color-done-emphasis: #8250df;
+  --color-success-fg: #1a7f37;
+  --color-success-emphasis: #238636;
+  background: rgba(var(--color-card), 0.35);
+  border-radius: 0 0.375rem 0.375rem 0;
+}
+html[data-theme="dark"] .markdown-alert {
+  --color-border-default: #30363d;
+  --color-accent-fg: #58a6ff;
+  --color-accent-emphasis: #1f6feb;
+  --color-danger-fg: #f85149;
+  --color-danger-emphasis: #da3633;
+  --color-attention-fg: #d29922;
+  --color-attention-emphasis: #9e6a03;
+  --color-done-fg: #a371f7;
+  --color-done-emphasis: #8957e5;
+  --color-success-fg: #3fb950;
+  --color-success-emphasis: #238636;
+  background: rgba(var(--color-card), 0.35);
+}
+.prose .markdown-alert {
+  opacity: 1 !important;
+  font-style: normal;
+}
+.prose .markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-accent-emphasis) !important;
+}
+.prose .markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-success-emphasis) !important;
+}
+.prose .markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-done-emphasis) !important;
+}
+.prose .markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-attention-emphasis) !important;
+}
+.prose .markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-danger-emphasis) !important;
+}
+.markdown-alert .markdown-alert-title svg.octicon {
+  width: 1em !important;
+  height: 1em !important;
+  fill: currentColor !important;
 }

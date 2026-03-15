@@ -6,7 +6,7 @@ import IconArchive from "@/assets/icons/IconArchive.svg";
 import IconSunHigh from "@/assets/icons/IconSunHigh.svg";
 import IconMenuDeep from "@/assets/icons/IconMenuDeep.svg";
 import LinkButton from "./LinkButton.astro";
-import { SITE } from "@/config";
+import { LOGO_IMAGE, SITE } from "@/config";
 import { BASE_HREF, BASE_PREFIX } from "@/utils/baseUrl";
 
 const { pathname } = Astro.url;
@@ -52,12 +52,37 @@ const isActive = (path: string) => {
       href={BASE_HREF}
       class="absolute py-1 text-xl leading-8 font-semibold whitespace-nowrap sm:static sm:my-auto sm:text-2xl sm:leading-none"
     >
-      {SITE.title}
-    </a>
-    <nav
-      id="nav-menu"
-      class="flex w-full flex-col items-center sm:ms-2 sm:flex-row sm:justify-end sm:space-x-4 sm:py-0"
-    >
+      {
+          LOGO_IMAGE.enable ? (
+            <div class="flex gap-1">
+              <img
+              src={`/blog/assets/${LOGO_IMAGE.svg ? "logo.svg" : "logo.png"}`}
+              alt={SITE.title}
+              width={LOGO_IMAGE.width}
+              height={LOGO_IMAGE.height}
+            />
+            <img
+              src={`/blog/assets/${LOGO_IMAGE.svg ? "logo.svg" : "logo.png"}`}
+              alt={SITE.title}
+              width={LOGO_IMAGE.width}
+              height={LOGO_IMAGE.height}
+            />
+            <img
+              src={`/blog/assets/${LOGO_IMAGE.svg ? "logo.svg" : "logo.png"}`}
+              alt={SITE.title}
+              width={LOGO_IMAGE.width}
+              height={LOGO_IMAGE.height}
+            />
+            </div>
+          ) : (
+            SITE.title
+          )
+        }
+      </a>
+      <nav
+        id="nav-menu"
+        class="flex w-full flex-col items-center sm:ms-2 sm:flex-row sm:justify-end sm:space-x-4 sm:py-0"
+      >
       <button
         id="menu-btn"
         class="focus-outline self-end p-2 sm:hidden"
@@ -87,11 +112,11 @@ const isActive = (path: string) => {
             Tags
           </a>
         </li>
-        <li class="col-span-2">
+        <!-- <li class="col-span-2">
           <a href={`${BASE_PREFIX}about`} class:list={{ "active-nav": isActive("/about") }}>
             About
           </a>
-        </li>
+        </li> -->
         {
           SITE.showArchives && (
             <li class="col-span-2">

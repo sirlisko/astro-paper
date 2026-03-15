@@ -1,12 +1,12 @@
 import { BLOG_PATH } from "@/content.config";
 import { slugifyStr } from "./slugify";
-import { BASE_PREFIX } from "./baseUrl";
+import { BASE_HREF } from "./baseUrl";
 
 /**
  * Get full path of a blog post
  * @param id - id of the blog post (aka slug)
  * @param filePath - the blog post full file location
- * @param includeBase - whether to include `/posts` in return value
+ * @param includeBase - whether to include the base path in return value
  * @returns blog post path
  */
 export function getPath(
@@ -22,7 +22,7 @@ export function getPath(
     .slice(0, -1) // remove the last segment_ file name_ since it's unnecessary
     .map(segment => slugifyStr(segment)); // slugify each segment path
 
-  const basePath = includeBase ? `${BASE_PREFIX}posts` : "";
+  const basePath = includeBase ? (BASE_HREF === "/" ? "" : BASE_HREF) : "";
 
   // Making sure `id` does not contain the directory
   const blogId = id.split("/");
