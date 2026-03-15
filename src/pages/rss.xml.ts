@@ -17,5 +17,6 @@ export async function GET() {
       description: data.description,
       pubDate: new Date(data.modDatetime ?? data.pubDatetime),
     })),
+    trailingSlash: false,
   });
 }
